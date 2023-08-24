@@ -1,7 +1,8 @@
-from langchain.agents import AgentType
+from langchain.agents import initialize_agent, AgentType
 from langchain.agents import create_pandas_dataframe_agent
 from langchain.callbacks import StreamlitCallbackHandler
 from langchain.chat_models import ChatOpenAI
+from langchain.tools import DuckDuckGoSearchRun
 import streamlit as st
 import pandas as pd
 import os
@@ -10,8 +11,8 @@ file_formats = {
     "csv": pd.read_csv,
     "xls": pd.read_excel,
     "xlsx": pd.read_excel,
-    "xlsm": pd.read_excel,
-    "xlsb": pd.read_excel,
+    "json": pd.read_json,
+    "html": pd.read_html,
 }
 
 
@@ -37,8 +38,8 @@ def load_data(uploaded_file):
         return None
 
 
-st.set_page_config(page_title="LangChain: Chat with pandas DataFrame", page_icon="🦜")
-st.title("🦜 LangChain: Chat with pandas DataFrame")
+st.set_page_config(page_title="LangChain: Chat with your Data table", page_icon="🦜")
+st.title("🦜 LangChain: Chat with Data tables")
 
 uploaded_file = st.file_uploader(
     "Upload a Data file",
@@ -46,11 +47,6 @@ uploaded_file = st.file_uploader(
     help="Various File formats are Support",
     on_change=clear_submit,
 )
-
-if not uploaded_file:
-    st.warning(
-        "This app uses LangChain's `PythonAstREPLTool` which is vulnerable to arbitrary code execution. Please use caution in deploying and sharing this app."
-    )
 
 if uploaded_file:
     df = load_data(uploaded_file)

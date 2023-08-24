@@ -1,15 +1,18 @@
 from pathlib import Path
 
+import os
+os.environ["PATH"] = "."
+
+
 import streamlit as st
 
 from langchain import SQLDatabase
 from langchain.agents import AgentType
 from langchain.agents import initialize_agent, Tool
 from langchain.callbacks import StreamlitCallbackHandler
-from langchain.chains import LLMMathChain
+from langchain.chains import LLMMathChain, SQLDatabaseChain
 from langchain.llms import OpenAI
 from langchain.utilities import DuckDuckGoSearchAPIWrapper
-from langchain_experimental.sql import SQLDatabaseChain
 
 from streamlit_agent.callbacks.capturing_callback_handler import playback_callbacks
 from streamlit_agent.clear_results import with_clear_container
@@ -25,9 +28,9 @@ SAVED_SESSIONS = {
 
 st.set_page_config(
     page_title="MRKL", page_icon="🦜", layout="wide", initial_sidebar_state="collapsed"
-)
+) # initial_sidebar_state="collapsed"
 
-"# 🦜🔗 MRKL"
+"# 🦜🔗 Modular Reasoning, Knowledge and Language (MRKL)"
 
 # Setup credentials in Streamlit
 user_openai_api_key = st.sidebar.text_input(
