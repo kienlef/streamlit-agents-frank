@@ -7,14 +7,13 @@ st.set_page_config(layout="wide")
 
 with st.sidebar:
    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
-   "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+  # "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     #"[View the source code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
     
 
 st.title("💬Overview Of Your Personalized Assistant")
 # Initial page config
 
-st.text('The purpose of this app is to perpare and play with the future concepts of personalized assistens. It is part of the lecture series of THE ANALYTICS TRANSLATROR')
 
 
 #######################################
@@ -27,29 +26,19 @@ col1, col2= st.columns(2)
     #######################################
     
 
-col1.subheader('General setup ')
-col1.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
-col1.text('API looks like: \n sk-6PDrhh0j5zHe45MRAwK7T3BlbkFJG5KMzGhVX00eaHk45W')
-col1.text('run locally: streamlit run app.py')
-          
+col1.subheader('General setup & info ')
+col1.markdown('''THE APP HERE IS FOR EDUCATIONAL PURPOSE, NO SERVICE GUARANTESS''')
+col1.markdown('''ATTENTION: When chainging the a APP in the sidebar history and key is delete. 
+              Some of the apps requrie a local storage of information. No intention to store history/input for long run, typically the app reboots frequently with full loss of history. 
+              The source code is on [GITHUB](https://github.com/kienlef/streamlit-agents-frank), deployed on streamlit''')
+col1.markdown('''[Get an OpenAI API key](https://platform.openai.com/account/api-keys)''')
+col1.markdown('''API example: \n sk-6PDrhh0j5zHe45MRAwK7T3BlbkFJG5KMzGhVX00eaHk45W''')
 
-
-col1.subheader('Display text')
-col1.code('''
-st.text('Fixed width text')
-st.markdown('_Markdown_') # see #*
-st.caption('Balloons. Hundreds of them...')
-st.latex(r\'\'\' e^{i\pi} + 1 = 0 \'\'\')
-st.write('Most objects') # df, err, func, keras!
-st.write(['st', 'is <', 3]) # see *
-st.title('My title')
-st.header('My header')
-st.subheader('My sub')
-st.code('for i in range(8): foo()')
-
-# * optional kwarg unsafe_allow_html = True
-
-''')
+col1.subheader('Credits go to:')
+col1.markdown('''[BASE ORIGIN OF THIS APPS](https://github.com/langchain-ai/streamlit-agent)''')
+col1.markdown('''[SteamLit the Cool Stuf for Analytics Deployment](https://streamlit.io)''')
+col1.markdown('''[Langchain the framework behind](https://www.langchain.com)''')
+col1.markdown('''[OPEN AI - CHAT GPT API](https://openai.com/chatgpt)''')          
 
     
     #######################################
@@ -58,26 +47,23 @@ st.code('for i in range(8): foo()')
 
     # Display interactive widgets
 
-col2.subheader('Display interactive widgets')
-col2.code('''
-st.button('Hit me')
-st.data_editor('Edit data', data)
-st.checkbox('Check me out')
-st.radio('Pick one:', ['nose','ear'])
-st.selectbox('Select', [1,2,3])
-st.multiselect('Multiselect', [1,2,3])
-st.slider('Slide me', min_value=0, max_value=10)
-st.select_slider('Slide to select', options=[1,'2'])
-st.text_input('Enter some text')
-st.number_input('Enter a number')
-st.text_area('Area for textual entry')
-st.date_input('Date input')
-st.time_input('Time entry')
-st.file_uploader('File uploader')
-st.download_button('On the dl', data)
-st.camera_input("一二三,茄子!")
-st.color_picker('Pick a color')
-           ''')
+col2.subheader('Why should you care')
+col2.markdown('''The Analytics translators''')
+col2.markdown('''We have the goal of integrating analytics capabilities in a company. 
+              We should identify value cases for the business and help deploy data-driven applications 
+              to support or automate intelligent decision-making.''')
+col2.markdown('''The role is new and yet to be well defined. 
+              It should be clear that this role or related roles will continuously evolve, 
+              and the role name might change. ''')
+
+
+col2.markdown('''In part one we defined the exisiting core capabilities.
+              [Udemy - The Analytics Translator](https://www.udemy.com/course/the-analytics-translator/?referralCode=C7867E8B4A33A7DD211C),
+             [Overview Article- The Analytics Translator](https://theanalyticstranslator.org)''')
+              
+col2.markdown(''' In this part two, we'll delve deep into what the future holds for our workplaces, 
+              shining a light on the latest trends. We will weave in discussions about the fascinating world 
+              of generative AI. As always, we break down complex topics into easy-to-understand concepts and applications. ''')
 
 
     # Connect to data sources
