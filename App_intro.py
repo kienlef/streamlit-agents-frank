@@ -5,8 +5,8 @@ import streamlit as st
 # Use the full page instead of a narrow central column
 st.set_page_config(layout="wide")
 
-with st.sidebar:
-   openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+#with st.sidebar:
+  # openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
   # "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
     #"[View the source code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
     
@@ -32,7 +32,7 @@ col1.markdown('''ATTENTION: When chainging the a APP in the sidebar history and 
               Some of the apps requrie a local storage of information. No intention to store history/input for long run, typically the app reboots frequently with full loss of history. 
               The source code is on [GITHUB](https://github.com/kienlef/streamlit-agents-frank), deployed on streamlit''')
 col1.markdown('''[Get an OpenAI API key](https://platform.openai.com/account/api-keys)''')
-col1.markdown('''API example: \n sk-6PDrhh0j5zHe45MRAwK7T3BlbkFJG5KMzGhVX00eaHk45W''')
+col1.markdown('''[Always Check your OPENAI usage](https://platform.openai.com/account/usage)''')
 
 col1.subheader('Credits go to:')
 col1.markdown('''[BASE ORIGIN OF THIS APPS](https://github.com/langchain-ai/streamlit-agent)''')
@@ -57,9 +57,9 @@ col2.markdown('''The role is new and yet to be well defined.
               and the role name might change. ''')
 
 
-col2.markdown('''In part one we defined the exisiting core capabilities.
-              [Udemy - The Analytics Translator](https://www.udemy.com/course/the-analytics-translator/?referralCode=C7867E8B4A33A7DD211C),
-             [Overview Article- The Analytics Translator](https://theanalyticstranslator.org)''')
+col2.markdown('''In part one we defined the exisiting core capabilities:
+              [Udemy - The Analytics Translator](https://www.udemy.com/course/the-analytics-translator/?referralCode=C7867E8B4A33A7DD211C)''')
+col2.markdown(''' An overview Article can be found here: [The Analytics Translator](https://theanalyticstranslator.org)''')
               
 col2.markdown(''' In this part two, we'll delve deep into what the future holds for our workplaces, 
               shining a light on the latest trends. We will weave in discussions about the fascinating world 

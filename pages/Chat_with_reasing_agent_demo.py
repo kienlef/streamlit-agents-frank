@@ -27,22 +27,30 @@ SAVED_SESSIONS = {
 }
 
 st.set_page_config(
-    page_title="MRKL", page_icon="🦜", layout="wide", initial_sidebar_state="collapsed"
+    page_title="MRKL", page_icon="🦜", layout="wide",
 ) # initial_sidebar_state="collapsed"
 
 "# 🦜🔗 Modular Reasoning, Knowledge and Language (MRKL)"
 
 # Setup credentials in Streamlit
-user_openai_api_key = st.sidebar.text_input(
-    "OpenAI API Key", type="password", help="Set this to run your own custom questions."
-)
+#user_openai_api_key = st.sidebar.text_input(
+#    "OpenAI API Key", type="password", help="Set this to run your own custom questions."
+#)
+with st.sidebar:
+    if ('OPENAIKEY' in st.secrets):
+        st.success('OPEN AI Login credentials already provided!', icon='✅')
+        openai_api_key = st.secrets['OPENAIKEY']
+    else:
+        openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+        "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
 
-if user_openai_api_key:
-    openai_api_key = user_openai_api_key
-    enable_custom = True
-else:
-    openai_api_key = "not_supplied"
-    enable_custom = False
+enable_custom = True  ## attention the other mode makes no sense
+#if user_openai_api_key:
+#    openai_api_key = user_openai_api_key
+#    enable_custom = True
+#else:
+#    openai_api_key = "not_supplied"
+#    enable_custom = False
 
 # Tools setup
 llm = OpenAI(temperature=0, openai_api_key=openai_api_key, streaming=True)

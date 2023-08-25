@@ -41,19 +41,34 @@ def load_data(uploaded_file):
 st.set_page_config(page_title="LangChain: Chat with your Data table", page_icon="🦜")
 st.title("🦜 LangChain: Chat with Data tables")
 
-uploaded_file = st.file_uploader(
-    "Upload a Data file",
-    type=list(file_formats.keys()),
-    help="Various File formats are Support",
-    on_change=clear_submit,
-)
+## openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+with st.sidebar:
+    if ('OPENAIKEY' in st.secrets):
+        st.success('OPEN AI Login credentials already provided!', icon='✅')
+        openai_api_key = st.secrets['OPENAIKEY']
+    else:
+        openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+        "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
 
-if uploaded_file:
-    df = load_data(uploaded_file)
 
-openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+
+    uploaded_file = st.file_uploader(
+        "Upload a Data file",
+        type=list(file_formats.keys()),
+        help="Various File formats are Support",
+        on_change=clear_submit,
+    )
+
+    if uploaded_file:
+        df = load_data(uploaded_file)
+
+if not uploaded_file:
+    st.info("Please upload data table to continue.")
+    st.stop()
+
+
 if "messages" not in st.session_state or st.sidebar.button("Clear conversation history"):
-    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+    st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you? "}]
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])

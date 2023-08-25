@@ -65,7 +65,15 @@ class PrintRetrievalHandler(BaseCallbackHandler):
             self.container.markdown(doc.page_content)
 
 
-openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+#openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
+with st.sidebar:
+    if ('OPENAIKEY' in st.secrets):
+        st.success('OPEN AI Login credentials already provided!', icon='✅')
+        openai_api_key = st.secrets['OPENAIKEY']
+    else:
+        openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+        "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+
 if not openai_api_key:
     st.info("Please add your OpenAI API key to continue.")
     st.stop()

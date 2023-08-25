@@ -7,9 +7,18 @@ import streamlit as st
 st.set_page_config(page_title="LangChain: Chat with search", page_icon="🦜")
 st.title("🦜 LangChain: Chat with search")
 
-openai_api_key = st.sidebar.text_input("OpenAI API Key", type="password")
-if "messages" not in st.session_state:
+with st.sidebar:
+    if ('OPENAIKEY' in st.secrets):
+        st.success('OPEN AI Login credentials already provided!', icon='✅')
+        openai_api_key = st.secrets['OPENAIKEY']
+    else:
+        openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+        "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+
+
+if "messages" not in st.session_state or st.sidebar.button("Clear conversation history"):
     st.session_state["messages"] = [{"role": "assistant", "content": "How can I help you?"}]
+
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
