@@ -2,6 +2,7 @@ import openai
 import streamlit as st
 
 
+
 # Use the full page instead of a narrow central column
 st.set_page_config(layout="wide")
 
@@ -11,9 +12,8 @@ st.set_page_config(layout="wide")
     #"[View the source code](https://github.com/streamlit/llm-examples/blob/main/Chatbot.py)"
     
 
-st.title("💬Overview Of Your Personalized Assistant")
+st.title("💬Overview - Personalized Assistant")
 # Initial page config
-
 
 
 #######################################
@@ -66,9 +66,7 @@ col2.markdown(''' In this part two, we'll delve deep into what the future holds 
               of generative AI. As always, we break down complex topics into easy-to-understand concepts and applications. ''')
 
 
-    # Connect to data sources
-    
-
+ #
 
 
     
