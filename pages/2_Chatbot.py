@@ -11,9 +11,9 @@ with st.sidebar:
         openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
         "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
 
-   # selected_model = st.selectbox('Choose  OpenAI model', ['gpt-3.5-turbo', 'gpt-4'], key='selected_model')
+   # selected_model = st.selectbox('Choose  OpenAI model', ['gpt-3.5-turbo', 'gpt-4-1106-preview'], key='selected_model')
     
-    selected_model = st.radio("Choose OpenAI model 👇", ["gpt-3.5-turbo", "gpt-4"])
+    selected_model = st.radio("Choose OpenAI model 👇", ["gpt-3.5-turbo", "gpt-4-1106-preview"])
     
 
 
